@@ -23,6 +23,12 @@
 
     <packaging>pom</packaging>
 
+    <modules>
+        <module>spring-boot-actuator</module>
+        <module>spring-boot-jackson</module>
+        <module>spring-boot-retry</module>
+    </modules>
+
 <!--    <dependencies>-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
