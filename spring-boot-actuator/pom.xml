@@ -8,7 +8,7 @@
         <artifactId>spring-boot-examples</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <groupId>com.github.boot</groupId>
     <artifactId>spring-boot-actuator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
