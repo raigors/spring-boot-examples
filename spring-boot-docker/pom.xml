@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github</groupId>
+        <artifactId>spring-boot-examples</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>spring-boot-docker</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>spring-boot-docker</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <arthas.version>3.4.6</arthas.version>
+        <java.tool.options>-Xms200m -Xmx200m</java.tool.options>
+        <docker.username/>
+        <docker.password/>
+        <docker.url/>
+        <docker.email/>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludeDevtools>false</excludeDevtools>
+                    <image>
+                        <!--要使用的构建器映像的名称。默认：paketobuildpacks/builder:base-->
+                        <builder>shishaodong/paketobuildpacks_builder:latest</builder>
+                        <!-- 运行时 Image -->
+                        <runImage>shishaodong/paketobuildpacks_run:latest</runImage>
+                        <!--映像生成的映像的名称。-->
+                        <name>shishaodong/${project.artifactId}:${project.version}</name>
+                        <!-- 拉取镜像的策略，可选的值：ALWAYS, NEVER, IF_NOT_PRESENT。默认 ALWAYS-->
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                        <!-- 应该传递给构建器的环境变量。-->
+                        <env>
+                            <BP_JVM_VERSION>8.*</BP_JVM_VERSION>
+                            <JAVA_TOOL_OPTIONS>${java.tool.options}</JAVA_TOOL_OPTIONS>
+                        </env>
+                        <!--是否需要在建立缓存前清理缓存。默认false-->
+                        <cleanCache>false</cleanCache>
+                        <!-- 启用构造器操作的详细日志记录。默认false-->
+                        <verboseLogging>true</verboseLogging>
+                        <!-- 执行完build 自动push。默认 false -->
+                        <publish>false</publish>
+                    </image>
+
+                    <docker>
+                        <!--配置构建宿主机信息，本机不用配置, 如果远程构建 docker 镜像，需要远程主机开启 TCP 访问-->
+                        <!-- docker 安装参考 https://www.jianshu.com/p/9702b39e868e -->
+                        <!-- <host>tcp://10.211.55.4:2375</host> -->
+                        <tlsVerify>false</tlsVerify>
+                        <!-- <certPath>/home/user/.minikube/certs</certPath>-->
+                        <!--                        <builderRegistry>-->
+                        <!--                            <username>${docker.username}</username>-->
+                        <!--                            <password>${docker.password}</password>-->
+                        <!--                            <url>${docker.url}</url>-->
+                        <!--                            <email>${docker.email}</email>-->
+                        <!--                        </builderRegistry>-->
+                        <publishRegistry>
+                            <username>${docker.username}</username>
+                            <password>${docker.password}</password>
+                            <url>${docker.url}</url>
+                            <email>${docker.email}</email>
+                        </publishRegistry>
+                    </docker>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
