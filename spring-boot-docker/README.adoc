@@ -201,11 +201,11 @@ mvn -DskipTests spring-boot:build-image -Ddocker.username=MyUsername -Ddocker.pa
 
 本地构建
 
-image:image/build-local.png[本地构建]
+image:image/build-local.jpg[本地构建]
 
 远程构建
 
-image:image/build-remote.png[远程构建]
+image:image/build-remote.jpg[远程构建]
 
 使用远程构建时要注意，远程服务器需要同时能访问 BuilderRegistry 和 PublishRegistry
 
