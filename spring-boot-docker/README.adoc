@@ -20,6 +20,7 @@ mvn spring-boot:build-image
 ----
 
 在 IDEA 也可以看到对应的插件
+
 image:image/WX20210205-143920.png[IDEA插件]
 
 注意： 默认的打包方式需要本地有 docker 环境，打包完成后通过
@@ -196,9 +197,17 @@ mvn -DskipTests spring-boot:build-image -Ddocker.username=MyUsername -Ddocker.pa
 </image>
 ----
 
+== 本地构建和远程构建区别
 
+本地构建
 
+image:image/build-local.png[本地构建]
 
+远程构建
+
+image:image/build-remote.png[远程构建]
+
+使用远程构建时要注意，远程服务器需要同时能访问 BuilderRegistry 和 PublishRegistry
 
 
 
