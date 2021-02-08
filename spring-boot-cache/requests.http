@@ -1,0 +1,32 @@
+
+###
+GET {{host}}/users
+Accept: application/json
+
+
+###
+GET {{host}}/user/name/ssd1
+Accept: application/json
+
+###
+GET {{host}}/user/phone/18888888881
+Accept: application/json
+
+
+###
+POST {{host}}/user
+Content-Type: application/json
+
+{
+  "name": "ssd1",
+  "phone": "18888888881",
+  "age": 18
+}
+
+
+
+
+
+
+
+
