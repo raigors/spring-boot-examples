@@ -1,7 +1,7 @@
 package com.github.spring.boot.cache.service;
 
-import com.github.spring.boot.cache.pojo.entity.UserDetailDO;
 import com.github.spring.boot.cache.pojo.dto.UserQueryDTO;
+import com.github.spring.boot.cache.pojo.entity.UserDetailDO;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
@@ -24,6 +24,12 @@ public interface IUserDetailService {
      * @return page
      */
     PageImpl<UserDetailDO> listUsers(UserQueryDTO query, Pageable pageable);
+
+
+    UserDetailDO findByName(String name);
+
+
+    UserDetailDO findByPhone(String phone);
 
     /**
      * 新增用户

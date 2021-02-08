@@ -39,6 +39,18 @@ public class UserDetailControllerImpl implements IUserDetailController {
         return ReturnVO.success(service.listUsers(query, pageable));
     }
 
+    @GetMapping("/user/name/{name}")
+    @Override
+    public ReturnVO<UserDetailDO> findByName(@PathVariable String name) {
+        return ReturnVO.success(service.findByName(name));
+    }
+
+    @GetMapping("/user/phone/{phone}")
+    @Override
+    public ReturnVO<UserDetailDO> findByPhone(@PathVariable String phone) {
+        return ReturnVO.success(service.findByPhone(phone));
+    }
+
     @PostMapping("/user")
     @Override
     public ReturnVO<UserDetailDO> create(@RequestBody UserCreateDTO userDetail) {

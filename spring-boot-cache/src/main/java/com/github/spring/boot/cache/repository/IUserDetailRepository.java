@@ -18,6 +18,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface IUserDetailRepository extends PagingAndSortingRepository<UserDetailDO, Long>, JpaSpecificationExecutor<UserDetailDO> {
 
+    UserDetailDO findByName(String name);
+
+    UserDetailDO findByPhone(String phone);
+
     /**
      * 根据用户名删除用户
      *

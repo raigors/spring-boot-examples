@@ -29,6 +29,12 @@ public interface IUserDetailController {
      */
     ReturnVO<PageImpl<UserDetailDO>> listUsers(UserQueryDTO query, Pageable pageable);
 
+
+    ReturnVO<UserDetailDO> findByName(String name);
+
+
+    ReturnVO<UserDetailDO> findByPhone(String phone);
+
     /**
      * 新增用户
      *

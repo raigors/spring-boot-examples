@@ -6,13 +6,19 @@ import com.github.spring.boot.cache.repository.IUserDetailRepository;
 import com.github.spring.boot.cache.service.IUserDetailService;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.Predicate;
 import java.util.List;
@@ -25,18 +31,44 @@ import java.util.List;
  * @author shishaodong
  * @version 0.0.1
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
+@CacheConfig(cacheNames = "user-cache", cacheManager = "JsonCacheManager", keyGenerator = "DefaultGenerator")
 public class UserDetailServiceImpl implements IUserDetailService {
 
     private final IUserDetailRepository repository;
 
-    @Cacheable
     @Override
     public PageImpl<UserDetailDO> listUsers(UserQueryDTO query, Pageable pageable) {
         return repository.findAll(getSpecification(query), pageable);
     }
 
+    @Cacheable
+    @Override
+    public UserDetailDO findByName(String name) {
+        UserDetailDO user = repository.findByName(name);
+        log.info("UserDetailDO - findByName:{} - {}", name, user);
+        return user;
+    }
+
+    @Cacheable
+    @Override
+    public UserDetailDO findByPhone(String phone) {
+        UserDetailDO user = repository.findByPhone(phone);
+        log.info("UserDetailDO - findByPhone:{} - {}", phone, user);
+        return user;
+    }
+
+    @Caching(
+            cacheable = {
+                    @Cacheable(key = "'[' + #a0.name + ']' "),
+            },
+            put = {
+                    @CachePut(key = "'[' + #result.name + ']'"),
+                    @CachePut(key = "'[' + #result.phone + ']'")
+            }
+    )
     @Override
     public UserDetailDO create(UserDetailDO userDetailDO) {
         return repository.save(userDetailDO);
@@ -47,11 +79,14 @@ public class UserDetailServiceImpl implements IUserDetailService {
         return repository.save(userDetailDO);
     }
 
+    @CacheEvict(key = "'[' + #a0 + ']'")
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public String delete(String name) {
         return repository.deleteByName(name) + "";
     }
 
+    @CacheEvict(allEntries = true)
     @Override
     public String deleteAll() {
         repository.deleteAll();
