@@ -29,6 +29,7 @@
         <module>spring-boot-retry</module>
         <module>spring-boot-cache</module>
         <module>spring-boot-docker</module>
+        <module>spring-boot-redis</module>
     </modules>
 
 </project>
