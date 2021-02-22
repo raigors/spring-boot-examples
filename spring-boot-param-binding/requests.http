@@ -1,6 +1,24 @@
+POST http://localhost:8080/body
+Content-Type: application/json
 
+{"name": "123"}
+
+###
+POST http://localhost:8080/file
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="file.txt"
+
+< ./README.adoc
+--WebAppBoundary--
+
+###
 GET http://localhost:8080/index/hello?aaa=wdwd
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:85.0) Gecko/20100101 Firefox/85.0
+
+
+
 
 
 
