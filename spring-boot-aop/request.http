@@ -1,0 +1,8 @@
+GET http://localhost:8080/message/sigma
+Accept: application/json
+
+###
+GET http://127.0.0.1:8080/div/23
+Accept: application/json
+
+###
