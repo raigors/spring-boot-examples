@@ -37,6 +37,7 @@
         <module>spring-boot-param-binding</module>
         <module>spring-boot-elasticsearch</module>
         <module>spring-boot-aop</module>
+        <module>spring-boot-interceptor</module>
     </modules>
 
     <dependencies>
