@@ -33,6 +33,7 @@
         <module>spring-boot-cache</module>
         <module>spring-boot-docker</module>
         <module>spring-boot-elasticsearch</module>
+        <module>spring-boot-filter</module>
         <module>spring-boot-interceptor</module>
         <module>spring-boot-jackson</module>
         <module>spring-boot-param-binding</module>
@@ -45,6 +46,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
         </dependency>
     </dependencies>
 
