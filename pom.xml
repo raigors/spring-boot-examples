@@ -31,6 +31,7 @@
         <module>spring-boot-actuator</module>
         <module>spring-boot-aop</module>
         <module>spring-boot-cache</module>
+        <module>spring-boot-conditional</module>
         <module>spring-boot-docker</module>
         <module>spring-boot-elasticsearch</module>
         <module>spring-boot-event</module>
