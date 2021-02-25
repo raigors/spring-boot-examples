@@ -1,5 +1,7 @@
 package com.github.spring.boot.elasticsearch.repository;
 
+import java.util.List;
+
 /**
  * TODO
  * <p>
@@ -10,4 +12,10 @@ package com.github.spring.boot.elasticsearch.repository;
  */
 
 public interface IElasticsearchMetaRepository {
+
+    List<String> findAllIndices();
+
+    boolean removeIndexByName(String indexName);
+
+
 }

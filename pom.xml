@@ -19,6 +19,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <guava.version>30.1-jre</guava.version>
         <javafaker.version>1.0.2</javafaker.version>
         <easyexcel.version>2.2.7</easyexcel.version>
         <commons-io.version>2.8.0</commons-io.version>
@@ -37,6 +38,14 @@
         <module>spring-boot-elasticsearch</module>
         <module>spring-boot-aop</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

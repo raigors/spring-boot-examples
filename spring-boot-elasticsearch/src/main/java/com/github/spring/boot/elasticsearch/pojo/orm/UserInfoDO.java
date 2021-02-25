@@ -1,12 +1,14 @@
 package com.github.spring.boot.elasticsearch.pojo.orm;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.github.spring.boot.elasticsearch.pojo.bo.BookBO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.domain.AfterDomainEventPublication;
 import org.springframework.data.domain.DomainEvents;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -14,12 +16,11 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
- * TODO
+ * \@Document(indexName = "#{\@index.getName()}", replicas = 0, refreshInterval = "-1")
  * <p>
  * create in 2021/2/18 4:15 下午
  *
@@ -30,15 +31,22 @@ import java.util.Date;
 @Setter
 @Builder
 @ToString
-@Document(indexName = "#{@index.getName()}", shards = 1, replicas = 0, refreshInterval = "-1", indexStoreType = "fs")
-public class BookDO {
+@TypeAlias("UserInfoDO")
+@Document(indexName = "#{@index.getName()}", replicas = 0, refreshInterval = "-1")
+public class UserInfoDO {
 
     @Id
     private String id;
 
-    private String name;
+    private String username;
 
-    private String desc;
+    private Integer age;
+
+    private List<String> programmingLanguages;
+
+    private String phoneNumber;
+
+    private List<BookBO> books;
 
     @CreatedDate
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -56,9 +64,9 @@ public class BookDO {
      * @return Collection
      */
     @DomainEvents
-    Collection<Object> domainEvents() {
+    UserInfoDO domainEvents() {
         // … return events you want to get published here
-        return Collections.emptyList();
+        return this;
     }
 
     /**

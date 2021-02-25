@@ -1,0 +1,29 @@
+POST http://localhost:8899/body
+Content-Type: application/json
+
+{
+  "name": "123",
+  "date": "202102251024",
+  "data": {"title": "Core Technologies","author": "Container"}
+}
+
+###
+###
+POST http://localhost:8899/file
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="file.txt"
+
+< ./README.adoc
+--WebAppBoundary--
+
+###
+POST http://localhost:8899/excel
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="file.txt"
+
+< ./src/main/resources/test.xlsx
+--WebAppBoundary--

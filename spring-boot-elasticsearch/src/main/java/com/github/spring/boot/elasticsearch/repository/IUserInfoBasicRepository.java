@@ -1,6 +1,6 @@
 package com.github.spring.boot.elasticsearch.repository;
 
-import com.github.spring.boot.elasticsearch.pojo.orm.BookDO;
+import com.github.spring.boot.elasticsearch.pojo.orm.UserInfoDO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -14,10 +14,10 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * @author shishaodong
  * @version 0.0.1
  */
-public interface IBookRepository extends ElasticsearchRepository<BookDO, String> {
+public interface IUserInfoBasicRepository extends ElasticsearchRepository<UserInfoDO, String> {
 
     <T> Page<T> findAllBy(Pageable pageable, Class<T> clz);
 
-    BookDO existsByNameEquals(String name);
+    UserInfoDO existsByUsernameEquals(String name);
 
 }

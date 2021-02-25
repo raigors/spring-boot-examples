@@ -1,0 +1,4 @@
+DELETE http://localhost:8080/index/user_info-2021-02-23_16_17
+Accept: application/json
+
+###

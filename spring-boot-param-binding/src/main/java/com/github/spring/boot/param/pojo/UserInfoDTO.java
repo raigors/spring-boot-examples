@@ -26,12 +26,14 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfoDTO {
+public class UserInfoDTO<T> {
 
     private String name;
 
     @DateTimeFormat(pattern = "yyyyMMddHHmm")
     @JsonFormat(pattern = "yyyyMMddHHmm", timezone = "GMT+8")
     private LocalDateTime date;
+
+    T data;
 
 }

@@ -1,5 +1,6 @@
 package com.github.spring.boot.param.controller;
 
+import com.github.spring.boot.param.pojo.BookDTO;
 import com.github.spring.boot.param.pojo.ResultVO;
 import com.github.spring.boot.param.pojo.UserInfoDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -19,14 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RequestBodyController {
 
-    @PostMapping("body")
-    public ResultVO<UserInfoDTO> body(@RequestBody UserInfoDTO userInfo) {
+    @PostMapping("/body")
+    public ResultVO<UserInfoDTO<BookDTO>> body(@RequestBody UserInfoDTO<BookDTO> userInfo) {
         log.debug("This is {} log", string());
         return ResultVO.success(userInfo);
     }
 
     private String string() {
-        System.out.println("debug");
+        log.debug("test debug");
         return "debug";
     }
 
