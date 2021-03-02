@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * @author shishaodong
  * @version 0.0.1
  */
-@Target(ElementType.PARAMETER)
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface ExcelResponseBody {

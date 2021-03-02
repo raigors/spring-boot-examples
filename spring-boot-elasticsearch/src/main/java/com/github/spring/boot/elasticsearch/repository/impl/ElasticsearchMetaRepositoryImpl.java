@@ -47,7 +47,7 @@ public class ElasticsearchMetaRepositoryImpl implements IElasticsearchMetaReposi
     }
 
     public void listAllIndices() {
-        IndexCoordinates index = IndexCoordinates.of("sample-index");
+        IndexCoordinates index = IndexCoordinates.of("sample-index_2021_02_22","sample-index_2021_02_23");
         NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
                 .withQuery(matchAllQuery())
                 .withFields("message")
