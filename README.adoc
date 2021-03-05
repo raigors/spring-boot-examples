@@ -1,1 +1,5 @@
 springboot 学习 demo
+
+
+link:./spring-boot-param-binding/README.adoc[参数绑定]
+
