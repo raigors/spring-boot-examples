@@ -43,6 +43,7 @@
         <module>spring-boot-param-binding</module>
         <module>spring-boot-property</module>
         <module>spring-boot-redis</module>
+        <module>spring-boot-rest-template</module>
         <module>spring-boot-retry</module>
         <module>spring-boot-schedule</module>
     </modules>

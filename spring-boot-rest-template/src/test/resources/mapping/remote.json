@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/api/remote"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"status\": 222,\"message\": \"mmmmmm\",\"data\":{\"age\": 18,\"username\": \"shishaodong\"}}"
+  }
+}
