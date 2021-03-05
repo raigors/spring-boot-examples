@@ -33,7 +33,7 @@ import java.util.List;
 @ToString
 @TypeAlias("UserInfoDO")
 @Document(indexName = "#{@index.getName()}", replicas = 0, refreshInterval = "-1")
-public class UserInfoDO {
+public class FlowLogDO {
 
     @Id
     private String id;
@@ -64,7 +64,7 @@ public class UserInfoDO {
      * @return Collection
      */
     @DomainEvents
-    UserInfoDO domainEvents() {
+    FlowLogDO domainEvents() {
         // … return events you want to get published here
         return this;
     }

@@ -1,7 +1,7 @@
 package com.github.spring.boot.elasticsearch.controller;
 
-import com.github.spring.boot.elasticsearch.pojo.orm.UserInfoDO;
-import com.github.spring.boot.elasticsearch.repository.IUserInfoBasicRepository;
+import com.github.spring.boot.elasticsearch.pojo.orm.FlowLogDO;
+import com.github.spring.boot.elasticsearch.repository.IFlowLogBasicRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -24,15 +24,15 @@ import javax.annotation.Resource;
 public class UserInfoController {
 
     @Resource
-    private IUserInfoBasicRepository repository;
+    private IFlowLogBasicRepository repository;
 
     @GetMapping("/users")
-    public Page<UserInfoDO> findAllUsers(@PageableDefault(page = 1) Pageable pageable) {
-        return repository.findAllBy(pageable, UserInfoDO.class);
+    public Page<FlowLogDO> findAllUsers(@PageableDefault(page = 1) Pageable pageable) {
+        return repository.findAllBy(pageable, FlowLogDO.class);
     }
 
     @GetMapping("/user/{username}")
-    public UserInfoDO existsByUsername(@PathVariable String username) {
+    public FlowLogDO existsByUsername(@PathVariable String username) {
         return repository.existsByUsernameEquals(username);
     }
 

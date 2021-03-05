@@ -1,6 +1,6 @@
 package com.github.spring.boot.elasticsearch.manager;
 
-import com.github.spring.boot.elasticsearch.pojo.orm.UserInfoDO;
+import com.github.spring.boot.elasticsearch.pojo.orm.FlowLogDO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.elasticsearch.core.event.AfterSaveCallback;
@@ -18,16 +18,16 @@ import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 @Slf4j
 @Order(1)
 //@Component
-public class BookCallbackService implements BeforeConvertCallback<UserInfoDO>, AfterSaveCallback<UserInfoDO> {
+public class BookCallbackService implements BeforeConvertCallback<FlowLogDO>, AfterSaveCallback<FlowLogDO> {
 
     @Override
-    public UserInfoDO onBeforeConvert(UserInfoDO entity, IndexCoordinates index) {
+    public FlowLogDO onBeforeConvert(FlowLogDO entity, IndexCoordinates index) {
         log.info("onBeforeConvert - {} - {}", entity.toString(), index.getIndexNames());
         return entity;
     }
 
     @Override
-    public UserInfoDO onAfterSave(UserInfoDO entity, IndexCoordinates index) {
+    public FlowLogDO onAfterSave(FlowLogDO entity, IndexCoordinates index) {
         log.info("onAfterSave - {} - {}", entity.toString(), index.getIndexNames());
         return entity;
     }

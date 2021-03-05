@@ -3,12 +3,12 @@ package com.github.spring.boot.elasticsearch.init;
 import com.github.javafaker.Book;
 import com.github.javafaker.Faker;
 import com.github.spring.boot.elasticsearch.pojo.bo.BookBO;
-import com.github.spring.boot.elasticsearch.pojo.orm.UserInfoDO;
-import com.github.spring.boot.elasticsearch.repository.IUserInfoBasicRepository;
+import com.github.spring.boot.elasticsearch.pojo.orm.FlowLogDO;
+import com.github.spring.boot.elasticsearch.repository.IFlowLogBasicRepository;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.time.DateTime;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,13 +23,13 @@ import java.util.Locale;
  * @version 0.0.1
  */
 @Slf4j
-@Component
+//@Component
 public class InitUserInfoRunner implements CommandLineRunner {
 
     @Resource
-    private IUserInfoBasicRepository repository;
+    private IFlowLogBasicRepository repository;
 
-    private static final int USER = 1000;
+    private static final int USER = 200;
 
     private static final Faker FAKER = new Faker(Locale.CHINESE);
 
@@ -37,20 +37,20 @@ public class InitUserInfoRunner implements CommandLineRunner {
     public void run(String... args) {
         if (repository.count() == 0) {
             for (int i = 0; i < USER; i++) {
-                UserInfoDO user = generateUser();
+                FlowLogDO user = generateUser();
                 repository.save(user);
                 log.info("保存数据:{} - {}", i, user.toString());
             }
         }
     }
 
-    private UserInfoDO generateUser() {
-        return UserInfoDO.builder()
+    private FlowLogDO generateUser() {
+        return FlowLogDO.builder()
                 .username(getUsername())
                 .age(getAge())
                 .programmingLanguages(getProgrammingLanguages())
                 .phoneNumber(getPhoneNumber())
-                .books(getBooks())
+                .books(getBooks()).createDate(DateTime.now().minusDays(0).toDate())
                 .build();
     }
 

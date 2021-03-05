@@ -1,6 +1,6 @@
 package com.github.spring.boot.elasticsearch.repository.impl;
 
-import com.github.spring.boot.elasticsearch.pojo.orm.UserInfoDO;
+import com.github.spring.boot.elasticsearch.pojo.orm.FlowLogDO;
 import com.github.spring.boot.elasticsearch.repository.IElasticsearchMetaRepository;
 import com.google.common.collect.Lists;
 import org.elasticsearch.client.RestHighLevelClient;
@@ -37,7 +37,7 @@ public class ElasticsearchMetaRepositoryImpl implements IElasticsearchMetaReposi
 
     @Override
     public List<String> findAllIndices() {
-        String[] indexNames = template.indexOps(UserInfoDO.class).getIndexCoordinates().getIndexNames();
+        String[] indexNames = template.indexOps(FlowLogDO.class).getIndexCoordinates().getIndexNames();
         return Lists.newArrayList(indexNames);
     }
 
@@ -54,8 +54,7 @@ public class ElasticsearchMetaRepositoryImpl implements IElasticsearchMetaReposi
                 .withPageable(PageRequest.of(0, 10))
                 .build();
 
-        SearchScrollHits<UserInfoDO> searchHits = template.searchScrollStart(1000, searchQuery, UserInfoDO.class, index);
-
+        SearchScrollHits<FlowLogDO> searchHits = template.searchScrollStart(1000, searchQuery, FlowLogDO.class, index);
 //        String scrollId = searchHits.getScrollId();
 //        List<BookDO> samples = Lists.newArrayList();
 //        while (searchHits.hasSearchHits()) {

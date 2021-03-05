@@ -1,0 +1,27 @@
+POST http://localhost:8899/log
+Content-Type: application/json
+
+{
+  "startTime": "2020-03-01",
+  "endTime": "2020-03-04",
+  "query": " {\"range\": {\"age\": {\"gte\":54}}}"
+}
+
+###
+GET http://localhost:8080/log?startTime=2020-03-01&endTime=2020-03-04
+Accept: application/json
+
+###
+GET http://localhost:8080/log?startTime=2020-03-01&endTime=2020-03-04&query="{\"term\":{\"username\": \"ina.wehner\"}}"
+Accept: application/json
+
+###
+POST http://localhost:8080/log
+Content-Type: application/json
+
+{
+  "startTime": "2020-03-01",
+  "endTime": "2020-03-04"
+}
+
+
