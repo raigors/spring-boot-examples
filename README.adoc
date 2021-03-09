@@ -1,5 +1,7 @@
-springboot 学习 demo
-
+= springboot 学习 demo
+:pdf-themesdir: themes
+:pdf-fontsdir: fonts
+:pdf-theme: KaiGenGothicCN
 
 link:./spring-boot-param-binding/README.adoc[参数绑定]
 
