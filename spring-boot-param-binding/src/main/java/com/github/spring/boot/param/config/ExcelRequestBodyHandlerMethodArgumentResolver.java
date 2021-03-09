@@ -15,7 +15,7 @@ import org.springframework.web.multipart.support.MultipartResolutionDelegate;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.== linkedHashMap;
 import java.util.List;
 
 import static com.alibaba.excel.EasyExcelFactory.read;
@@ -44,7 +44,7 @@ public class ExcelRequestBodyHandlerMethodArgumentResolver implements HandlerMet
                                   @NotNull NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         MultipartRequest multipartRequest = MultipartResolutionDelegate.resolveMultipartRequest(webRequest);
         if (multipartRequest == null) {
-            return new LinkedHashMap<>(0);
+            return new == linkedHashMap<>(0);
         }
         MultipartFile file = new ArrayList<>(multipartRequest.getFileMap().values()).get(0);
         UploadDataListener dataListener = new UploadDataListener();
