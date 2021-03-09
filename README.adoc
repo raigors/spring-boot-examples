@@ -3,38 +3,107 @@
 :pdf-fontsdir: fonts
 :pdf-theme: KaiGenGothicCN
 
-link:./spring-boot-param-binding/README.adoc[参数绑定]
+== link:./spring-boot-param-binding/README.adoc[参数绑定]
 
-link:./spring-boot-property/README.adoc[读取配置]
+NOTE: Controller 层获取 http 输入参数
 
-link:./spring-boot-aop/README.adoc[切面编程]
+* 从 url 获取参数
+* 从 RequestBody 获取参数
+* 从 Cookie 获取参数
+* 从 Header 获取参数
 
-link:./spring-boot-schedule/README.adoc[定时任务]
+== link:./spring-boot-property/README.adoc[读取配置]
 
-link:./spring-boot-async/README.adoc[异步任务]
+NOTE: 从 application-XXX.properties 读取配置
 
-link:./spring-boot-controller-advice/README.adoc[统一异常处理]
+* @Value 获取配置
+* 对象获取参数
 
-link:./spring-boot-event/README.adoc[事件机制]
+== link:./spring-boot-aop/README.adoc[切面编程]
 
-link:./spring-boot-actuator/README.adoc[ops-actuator]
+面向切面编程的几种方式
 
-link:./spring-boot-cache/README.adoc[缓存机制]
+* 方法切面
+* 注解切面
 
-link:./spring-boot-conditional/README.adoc[条件装载]
+== link:./spring-boot-schedule/README.adoc[定时任务]
 
-link:./spring-boot-elasticsearch/README.adoc[es-API]
+单机版定时任务
 
-link:./spring-boot-filter/README.adoc[过滤器]
+== link:./spring-boot-async/README.adoc[异步任务]
 
-link:./spring-boot-interceptor/README.adoc[拦截器]
+异步任务
 
-link:./spring-boot-redis/README.adoc[redis-api]
+== link:./spring-boot-controller-advice/README.adoc[统一异常处理]
 
-link:./spring-boot-retry/README.adoc[重试机制]
+NOTE: 异常和报错只由一处维护
 
-link:./spring-boot-jackson/README.adoc[数据解析]
+统一异常处理
 
-link:./spring-boot-rest-template/README.adoc[数据解析]
+== link:./spring-boot-event/README.adoc[事件机制]
+
+NOTE: 业务处理到某个关键时间点发出广播，关心这个事件可以设置监听器扩展业务。
+
+容器内事件发布
+
+== link:./spring-boot-actuator/README.adoc[ops-actuator]
+
+健康检测
+
+* mongodb
+* es
+* redis
+
+== link:./spring-boot-cache/README.adoc[缓存机制]
+
+缓存机制
+
+== link:./spring-boot-conditional/README.adoc[条件装载]
+
+NOTE: 按照条件向 Spring 容器中注入 Bean。 写框架时，需要满足一定条件才生效； 给出一个默认实现，并允许使用方覆盖定制；
+
+* @Conditional
+* @ConditionalOnMissingBean
+* @ConditionalOnProperty
+* @ConditionalOnBean
+* ...
+
+== link:./spring-boot-elasticsearch/README.adoc[es-api]
+
+spring-boot 整合 es
+
+== link:./spring-boot-filter/README.adoc[过滤器]
+
+spring-boot 过滤器应用
+
+== link:./spring-boot-interceptor/README.adoc[拦截器]
+
+spring-boot 拦截器应用
+
+== link:./spring-boot-redis/README.adoc[redis-api]
+
+spring-boot 整合 redis
+
+== link:./spring-boot-retry/README.adoc[重试机制]
+
+NOTE: 某些重要操作要尽量保证成功，如：下订单，下发配置，付款等。如果有请求失败，需要多尝试几次。
+
+spring-boot 重试机制
+
+== link:./spring-boot-jackson/README.adoc[数据解析]
+
+NOTE: 不同系统交互，相同含义的字段命名不一致；前后端交互， 前端传过来数据需要特殊处理(反序列化)。
+
+* 字符串转 Date 格式；
+* 字段设置别名；
+* 接口返回只显示非空字段；
+* 某些特殊字段不返回，如密码；
+* 同一个对象不同的视图；
+
+== link:./spring-boot-rest-template/README.adoc[数据解析]
+
+NOTE: 调用远程 rest 接口。
+
+请求远程接口
 
 
