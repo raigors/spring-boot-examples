@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan属性未true时，如果配置文档发生改变将会进行重新加载 -->
+<!-- scanPeriod属性设置监测配置文件修改的时间间隔，默认单位为毫秒，在scan为true时才生效 -->
+<!-- debug属性如果为true时，会打印出logback内部的日志信息 -->
+<configuration scan="true" scanPeriod="30 seconds" debug="false" packagingData="true">
+
+    <!-- 日志的显式格式 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}-%msg%n"/>
+
+    <!-- 控制台显示 -->
+    <appender name="STD_OUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- filter 必须写在前面才能生效 -->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return message.contains("billing");</expression>
+            </evaluator>
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+</configuration>
