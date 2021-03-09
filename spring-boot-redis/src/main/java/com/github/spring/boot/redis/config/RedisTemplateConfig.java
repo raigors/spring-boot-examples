@@ -1,6 +1,7 @@
 package com.github.spring.boot.redis.config;
 
 import com.github.spring.boot.redis.pojo.UserDO;
+import org.springframework.boot.actuate.redis.RedisHealthIndicator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -18,6 +19,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @Configuration
 public class RedisTemplateConfig {
+
+    @Bean
+    public RedisHealthIndicator redisHealthIndicator(RedisConnectionFactory connectionFactory){
+        return new RedisHealthIndicator(connectionFactory);
+    }
 
     /**
      * 使用 Jackson 方式序列化对象
