@@ -106,4 +106,12 @@ NOTE: 调用远程 rest 接口。
 
 请求远程接口
 
+== link:./spring-boot-swagger/README.adoc[在线接口文档]
+
+NOTE: 不想写接口文档怎么办。
+
+实时在线接口文档
+
+
+
 
