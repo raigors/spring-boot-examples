@@ -1,0 +1,6 @@
+POST http://localhost:80/api/item
+Content-Type: application/json
+
+{"name": "name1111","age": 12,"address": "hangzhou","email": "spring-boot@qq.com"}
+
+###
