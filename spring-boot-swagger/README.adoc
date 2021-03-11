@@ -1,0 +1,29 @@
+= swagger与 springboot 集成
+
+简单加入以下依赖，然后启用 `@EnableOpenApi`
+http://springfox.github.io/springfox/docs/current
+
+[source,xml]
+----
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>${springfox.version}</version>
+</dependency>
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

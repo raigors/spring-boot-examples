@@ -11,6 +11,7 @@ NOTE: Controller 层获取 http 输入参数
 * 从 RequestBody 获取参数
 * 从 Cookie 获取参数
 * 从 Header 获取参数
+* 参数绑定原理
 
 == link:./spring-boot-property/README.adoc[读取配置]
 
@@ -25,6 +26,17 @@ NOTE: 从 application-XXX.properties 读取配置
 
 * 方法切面
 * 注解切面
+
+== link:./spring-boot-jackson/README.adoc[数据解析]
+
+NOTE: 不同系统交互，相同含义的字段命名不一致；前后端交互， 前端传过来数据需要特殊处理(反序列化)。
+
+* 字符串转 Date 格式；
+* 字段设置别名；
+* 接口返回只显示非空字段；
+* 某些特殊字段不返回，如密码；
+* 同一个对象不同的视图；
+* ...
 
 == link:./spring-boot-schedule/README.adoc[定时任务]
 
@@ -53,6 +65,7 @@ NOTE: 业务处理到某个关键时间点发出广播，关心这个事件可�
 * mongodb
 * es
 * redis
+* ...
 
 == link:./spring-boot-cache/README.adoc[缓存机制]
 
@@ -89,16 +102,6 @@ spring-boot 整合 redis
 NOTE: 某些重要操作要尽量保证成功，如：下订单，下发配置，付款等。如果有请求失败，需要多尝试几次。
 
 spring-boot 重试机制
-
-== link:./spring-boot-jackson/README.adoc[数据解析]
-
-NOTE: 不同系统交互，相同含义的字段命名不一致；前后端交互， 前端传过来数据需要特殊处理(反序列化)。
-
-* 字符串转 Date 格式；
-* 字段设置别名；
-* 接口返回只显示非空字段；
-* 某些特殊字段不返回，如密码；
-* 同一个对象不同的视图；
 
 == link:./spring-boot-rest-template/README.adoc[数据解析]
 
