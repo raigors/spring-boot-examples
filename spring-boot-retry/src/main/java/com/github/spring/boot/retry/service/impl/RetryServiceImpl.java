@@ -33,7 +33,8 @@ public class RetryServiceImpl implements IRetryService {
     @Retryable(
             value = Exception.class,
             maxAttempts = 2,
-            backoff = @Backoff(delay = 1000L, multiplier = 1.5)
+            backoff = @Backoff(delay = 1000L, multiplier = 1.5),
+            listeners = {"RemoteRemoteListener"}
     )
     @Override
     public String retry(String id) {

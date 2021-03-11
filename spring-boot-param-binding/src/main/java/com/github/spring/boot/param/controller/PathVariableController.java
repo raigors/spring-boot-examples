@@ -6,6 +6,7 @@ import com.github.spring.boot.param.constraint.annotation.Print;
 import com.github.spring.boot.param.pojo.ResultVO;
 import com.github.spring.boot.param.pojo.SpringVO;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +38,9 @@ public class PathVariableController {
         return SpringVO.builder().agent(agent).message(message + "  " + aaa).build();
     }
 
-    @GetMapping("path/many/{ids}")
-    public ResultVO<Set<Long>> many(@PathVariable("ids") Set<Long> ids) throws JsonProcessingException {
+    @SneakyThrows(JsonProcessingException.class)
+    @GetMapping("/path/many/{ids}")
+    public ResultVO<Set<Long>> many(@PathVariable("ids") Set<Long> ids) {
         log.error("路径获取多个参数:{}", objectMapper.writeValueAsString(ids));
         return ResultVO.success(ids);
     }

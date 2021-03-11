@@ -3,7 +3,6 @@ package com.github.spring.boot.retry.controller.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.retry.RecoveryCallback;
-import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,19 +31,13 @@ public class ManualRetryController {
     int a = 0;
 
     @GetMapping("/manual")
-    public String get() throws Throwable {
-        return retryTemplate.execute((RetryCallback<String, Throwable>) context -> getString());
+    public String get() {
+        return retryTemplate.execute(context -> getString());
     }
 
     @GetMapping("/manual2")
-    public String get2() throws Throwable {
-        return retryTemplate.execute((RetryCallback<String, Throwable>) context -> getString(),
-                new RecoveryCallback<String>() {
-            @Override
-            public String recover(RetryContext retryContext) throws Exception {
-                return recover(retryContext);
-            }
-        });
+    public String get2() {
+        return retryTemplate.execute(context -> getString(), getRecoveryCallback());
     }
 
     @NotNull
@@ -58,5 +51,13 @@ public class ManualRetryController {
         return "ERROR";
     }
 
+    private RecoveryCallback<String> getRecoveryCallback() {
+        return new RecoveryCallback<String>() {
+            @Override
+            public String recover(RetryContext retryContext) {
+                return recover(retryContext);
+            }
+        };
+    }
 
 }

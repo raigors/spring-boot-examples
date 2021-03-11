@@ -1,4 +1,4 @@
-package com.github.spring.boot.retry.config;
+package com.github.spring.boot.retry.config.retry;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

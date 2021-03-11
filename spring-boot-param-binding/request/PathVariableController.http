@@ -2,3 +2,9 @@ GET http://localhost:8899/index/ssssss
 Accept: application/json
 
 ###
+
+GET http://localhost:8899/path/many/11,22,33,44
+Accept: application/json
+
+###
+

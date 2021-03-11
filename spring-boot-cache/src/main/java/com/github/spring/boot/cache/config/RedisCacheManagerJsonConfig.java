@@ -15,7 +15,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
 
-import java.util.== linkedHashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
@@ -38,7 +38,7 @@ public class RedisCacheManagerJsonConfig {
                 determineConfiguration(cacheProperties, redisCacheConfiguration));
         List<String> cacheNames = cacheProperties.getCacheNames();
         if (!cacheNames.isEmpty()) {
-            builder.initialCacheNames(new == linkedHashSet<>(cacheNames));
+            builder.initialCacheNames(new LinkedHashSet<>(cacheNames));
         }
         redisCacheManagerBuilderCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
         return cacheManagerCustomizers.customize(builder.build());

@@ -2,6 +2,7 @@ package com.github.spring.boot.kafka.controller.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.annotation.DirtiesContext;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @author shishaodong
  * @version 0.0.1
  */
-
+@Slf4j
 @DirtiesContext
 @SpringBootTest
 @EmbeddedKafka(count = 3, ports = {9092, 9093, 9094}, controlledShutdown = true)
@@ -43,7 +45,9 @@ class DataEntryControllerImplTest {
         ProducerFactory<String, String> producerFactory = new DefaultKafkaProducerFactory<>(senderProperties);
         KafkaTemplate<String, String> template = new KafkaTemplate<>(producerFactory);
         String topic = "test_topic";
-        template.send(topic, objectMapper.writeValueAsString(getUserAuditLog()));
+        String message = objectMapper.writeValueAsString(getUserAuditLog());
+        log.info(message);
+        template.send(topic, message);
         TimeUnit.SECONDS.sleep(2);
     }
 
@@ -59,6 +63,7 @@ class DataEntryControllerImplTest {
                 .ip("test_ip").age(11)
                 .userAgent("test_useragent")
                 .message("test_message")
+                .accessDate(new Date())
                 .build();
     }
 

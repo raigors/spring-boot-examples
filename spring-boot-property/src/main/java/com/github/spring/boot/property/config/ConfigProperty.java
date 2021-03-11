@@ -4,6 +4,7 @@ import com.github.spring.boot.property.pojo.UserDO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,11 +27,15 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "com.github")
 public class ConfigProperty {
 
+    @NestedConfigurationProperty
     private Map<String, String> map;
 
+    @NestedConfigurationProperty
     private List<String> list;
 
+    @NestedConfigurationProperty
     private UserDO user;
 
+    @NestedConfigurationProperty
     private List<UserDO> users;
 }
