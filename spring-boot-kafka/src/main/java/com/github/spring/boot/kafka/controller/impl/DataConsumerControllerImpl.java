@@ -1,6 +1,6 @@
 package com.github.spring.boot.kafka.controller.impl;
 
-import com.github.spring.boot.kafka.controller.IDataEntryController;
+import com.github.spring.boot.kafka.controller.IDataConsumerController;
 import com.github.spring.boot.kafka.pojo.ResultVO;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class DataEntryControllerImpl implements IDataEntryController {
+public class DataConsumerControllerImpl implements IDataConsumerController {
 
     @Override
     public ResultVO<Void> saveMessage(UserAuditLogDTO message) {

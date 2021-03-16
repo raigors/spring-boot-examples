@@ -4,7 +4,6 @@ import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.listener.adapter.RecordFilterStrategy;
-import org.springframework.stereotype.Component;
 
 /**
  * TODO
@@ -16,9 +15,8 @@ import org.springframework.stereotype.Component;
  */
 
 @Slf4j
-@Component
+//@Component
 public class UserAuditLogFilterStrategy implements RecordFilterStrategy<String, UserAuditLogDTO> {
-
 
     @Override
     public boolean filter(ConsumerRecord<String, UserAuditLogDTO> consumerRecord) {

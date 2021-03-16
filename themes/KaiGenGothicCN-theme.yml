@@ -56,7 +56,7 @@ base:
 # correct line height for Noto Serif metrics
 vertical_rhythm: $base_line_height_length
 horizontal_rhythm: $base_line_height_length
-== link:
+link:
   font_color: 428bca
 # literal is currently used for inline monospaced in prose and table cells
 literal:

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author shishaodong
  */
+
 @SpringBootApplication
 public class SpringBootKafkaApplication {
 

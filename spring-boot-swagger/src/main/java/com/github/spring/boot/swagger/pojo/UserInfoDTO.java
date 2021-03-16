@@ -6,9 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -34,8 +33,7 @@ public class UserInfoDTO {
     private String name;
 
     @ApiModelProperty("年龄")
-    @Max(150)
-    @Min(1)
+    @Range(min = 1, max = 150)
     private Integer age;
 
     @NotNull

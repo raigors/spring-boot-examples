@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 @DirtiesContext
 @SpringBootTest
 @EmbeddedKafka(count = 3, ports = {9092, 9093, 9094}, controlledShutdown = true)
-class DataEntryControllerImplTest {
+class DataConsumerControllerImplTest {
 
     @Value("${spring.embedded.kafka.brokers}")
     private String brokerAddresses;

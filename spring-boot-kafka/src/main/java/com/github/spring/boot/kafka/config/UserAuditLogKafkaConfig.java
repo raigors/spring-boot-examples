@@ -5,12 +5,15 @@ import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.RecordInterceptor;
+import org.springframework.kafka.listener.adapter.RecordFilterStrategy;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -42,7 +45,6 @@ public class UserAuditLogKafkaConfig {
         return new DefaultKafkaConsumerFactory<>(map);
     }
 
-
     /**
      * @return ConcurrentKafkaListenerContainerFactory
      */
@@ -53,16 +55,15 @@ public class UserAuditLogKafkaConfig {
         factory.setConcurrency(10);
         // enable batch listening
         factory.setBatchListener(true);
-        factory.setRecordFilterStrategy(filterStrategy);
-        factory.setRecordInterceptor(recordInterceptor);
+        filterStrategyObjectProvider.ifAvailable(factory::setRecordFilterStrategy);
+        recordInterceptorObjectProvider.ifAvailable(factory::setRecordInterceptor);
         return factory;
     }
 
     @Resource
-    private UserAuditLogFilterStrategy filterStrategy;
+    private ObjectProvider<RecordFilterStrategy<String, UserAuditLogDTO>> filterStrategyObjectProvider;
 
     @Resource
-    private UserAuditLogRecordInterceptor recordInterceptor;
-
+    private ObjectProvider<RecordInterceptor<String, UserAuditLogDTO>> recordInterceptorObjectProvider;
 
 }

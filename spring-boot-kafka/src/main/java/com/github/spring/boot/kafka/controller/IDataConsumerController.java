@@ -14,7 +14,7 @@ import java.util.List;
  * @version 0.0.1
  */
 
-public interface IDataEntryController {
+public interface IDataConsumerController {
 
     ResultVO<Void> saveMessage(UserAuditLogDTO message);
 
