@@ -112,6 +112,21 @@
         <appender-ref ref="FILE"/>
     </root>
 
+    <springProfile name="dev">
+        <!-- 开发环境时激活 -->
+    </springProfile>
+
+    <springProfile name="dev,test">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!prod">
+        <!-- 当 "生产" 环境时，该配置不激活-->
+    </springProfile>
+
     <!-- 同步日志产生的记录器 -->
     <logger name="DEBUG" level="debug">
         <appender-ref ref="DEBUG_ACCESS"/>

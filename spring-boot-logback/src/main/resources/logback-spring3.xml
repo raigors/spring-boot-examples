@@ -13,22 +13,18 @@
     <contextName>${app_name}</contextName>
 
     <!-- 控制台显示 -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- filter 必须写在前面才能生效 -->
-        <!--        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
-        <!--            <evaluator>-->
-        <!--                <expression>return message.contains("billing");</expression>-->
-        <!--            </evaluator>-->
-        <!--            <OnMatch>ACCEPT</OnMatch>-->
-        <!--            <OnMismatch>DENY</OnMismatch>-->
-        <!--        </filter>-->
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 需要引入额外的解析库依赖 janino -->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return message.contains("tag");</expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
         </filter>
         <encoder>
             <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
         </encoder>
     </appender>
 
@@ -38,7 +34,7 @@
 
     <springProfile name="dev">
         <logger name="com.github.spring.boot.logback" level="DEBUG" additivity="false">
-            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="STDOUT"/>
         </logger>
     </springProfile>
 

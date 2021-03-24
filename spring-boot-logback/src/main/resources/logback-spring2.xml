@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan属性未true时，如果配置文档发生改变将会进行重新加载 -->
+<!-- scanPeriod属性设置监测配置文件修改的时间间隔，默认单位为毫秒，在scan为true时才生效 -->
+<!-- debug属性如果为true时，会打印出logback内部的日志信息 -->
+<configuration scan="true" scanPeriod="1 seconds" debug="false" packagingData="true">
+
+    <!-- 定义参数常量 -->
+    <!-- 日志级别：TRACE<DEBUG<INFO<WARN<ERROR，其中常用的是DEBUG、INFO和ERROR -->
+    <property name="LOG_HOME" value="spring-boot-logback/log"/>
+
+    <!-- 文件保留时间 -->
+    <property name="LOG_MAX_HISTORY" value="30"/>
+
+    <!-- 日志的显式格式 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %line %-5level %logger{50}-%msg%n"/>
+
+    <!-- 从 application.properties 中 spring.application.name 属性取出对应的属性 -->
+    <springProperty scope="context" name="app_name" source="spring.application.name"/>
+
+    <contextName>${app_name}</contextName>
+
+    <!-- INFO 日志写入到文件中,外部访问的同步日志,只接受 INFO 级别的日志 -->
+    <appender name="ROLL_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- filter 必须写在前面才能生效 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 设置日志级别 -->
+            <level>INFO</level>
+            <!-- 如果跟该日志水平相匹配，则接受 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 如果跟该日志水平不匹配，则过滤掉 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 文件路径 -->
+        <file>${LOG_HOME}/info/${app_name}.log</file>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/info/${app_name}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 1MB, keep 15 days worth of history, but at most 10MB -->
+            <maxFileSize>1MB</maxFileSize>
+            <!-- 15 天的时间周期，日志量最大 10MB-->
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+        </rollingPolicy>
+        <!-- 格式化输出 -->
+        <encoder charset="UTF-8" class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 表示在 application-dev.properties 情况下生效, 如果有对个,用 逗号分隔,' name="dev,test" ' -->
+    <springProfile name="dev">
+        <!-- logger 一般为类名,这样就可以打印业务日志了 -->
+        <logger name="com.github.spring.boot.logback.schedule.ScheduleInfo" level="INFO" additivity="false">
+            <appender-ref ref="ROLL_FILE_APPENDER"/>
+        </logger>
+    </springProfile>
+
+</configuration>

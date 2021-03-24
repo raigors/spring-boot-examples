@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan属性未true时，如果配置文档发生改变将会进行重新加载 -->
+<!-- scanPeriod属性设置监测配置文件修改的时间间隔，默认单位为毫秒，在scan为true时才生效 -->
+<!-- debug属性如果为true时，会打印出logback内部的日志信息 -->
+<configuration scan="true" scanPeriod="1 seconds" debug="false" packagingData="true">
+
+    <!-- 从 application.properties 中 spring.application.name 属性取出对应的属性 -->
+    <springProperty scope="context" name="app_name" source="spring.application.name"/>
+
+    <contextName>${app_name}</contextName>
+    <!-- 定义参数常量 -->
+    <!-- 日志级别：TRACE<DEBUG<INFO<WARN<ERROR，其中常用的是DEBUG、INFO和ERROR -->
+    <property name="LOG_HOME" value="spring-boot-logback/log"/>
+
+    <!-- 打印主业务数据的日志,其他的都不打印 -->
+    <property name="MAJOR_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}-${app_name}-%msg%n"/>
+
+    <!-- 日志的显式格式 -->
+    <property name="RUNTIME_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %line %-5level %logger{50}-%msg%n"/>
+
+    <!-- 主业务日志,主要是用来采集使用 -->
+    <appender name="MAJOR_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- filter 必须写在前面才能生效 -->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return formattedMessage.contains("major");</expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <!-- 文件路径 -->
+        <file>${LOG_HOME}/major-${app_name}.log</file>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/major-${app_name}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 1MB, keep 15 days worth of history, but at most 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            <!-- 15 天的时间周期，日志量最大 10MB-->
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <!-- 格式化输出 -->
+        <encoder charset="UTF-8" class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${MAJOR_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- INFO 日志写入到文件中,外部访问的同步日志,只接受 INFO 级别的日志 -->
+    <appender name="ROLL_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 文件路径 -->
+        <file>${LOG_HOME}/run-${app_name}.log</file>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/run-${app_name}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 1MB, keep 15 days worth of history, but at most 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            <!-- 15 天的时间周期，日志量最大 10MB-->
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <!-- 格式化输出 -->
+        <encoder charset="UTF-8" class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${RUNTIME_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 主业务日志,主要是用来采集使用 -->
+    <appender name="ERROR_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- filter 必须写在前面才能生效 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 设置日志级别 -->
+            <level>ERROR</level>
+            <!-- 如果跟该日志水平相匹配，则接受 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 如果跟该日志水平不匹配，则过滤掉 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 文件路径 -->
+        <file>${LOG_HOME}/error-${app_name}.log</file>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/error-${app_name}-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 1MB, keep 15 days worth of history, but at most 10MB -->
+            <maxFileSize>100MB</maxFileSize>
+            <!-- 15 天的时间周期，日志量最大 10MB-->
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+        <!-- 格式化输出 -->
+        <encoder charset="UTF-8" class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${RUNTIME_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 打印业务日志 -->
+    <logger name="com.github.spring.boot.logback.service.MajorService" level="INFO" additivity="false">
+        <appender-ref ref="MAJOR_APPENDER"/>
+    </logger>
+
+    <!-- 错误级别日志 -->
+    <root level="ERROR">
+        <appender-ref ref="ERROR_APPENDER"/>
+    </root>
+
+    <!-- 表示在 application-dev.properties 情况下生效, 如果有对个,用 逗号分隔,' name="dev,test" ' -->
+    <springProfile name="dev,test">
+        <!-- 日志输出级别 -->
+        <root level="INFO">
+            <appender-ref ref="ROLL_FILE_APPENDER"/>
+        </root>
+    </springProfile>
+
+    <!-- 表示在 application-prod.properties 情况下生效, 如果有对个,用 逗号分隔,' name="prod" ' -->
+    <springProfile name="prod">
+        <!-- 日志输出级别 -->
+        <root level="WARN">
+            <appender-ref ref="ROLL_FILE_APPENDER"/>
+        </root>
+    </springProfile>
+
+</configuration>

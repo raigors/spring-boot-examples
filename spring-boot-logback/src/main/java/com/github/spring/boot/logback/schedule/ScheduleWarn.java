@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * TODO
  * <p>
@@ -18,8 +20,10 @@ public class ScheduleWarn {
 
     @Scheduled(fixedRate = 1500L)
     public void task() throws InterruptedException {
-        log.warn("warn");
-//        TimeUnit.SECONDS.sleep(10);
+        while (true) {
+            log.warn("warn");
+            TimeUnit.SECONDS.sleep(10);
+        }
     }
 
 }
