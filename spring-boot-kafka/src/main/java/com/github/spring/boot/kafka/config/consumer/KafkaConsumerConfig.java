@@ -1,4 +1,4 @@
-package com.github.spring.boot.kafka.config;
+package com.github.spring.boot.kafka.config.consumer;
 
 import com.github.spring.boot.kafka.deserializer.UserAuditLogDeserializer;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.listener.RecordInterceptor;
 import org.springframework.kafka.listener.adapter.RecordFilterStrategy;
 
@@ -19,16 +20,20 @@ import javax.annotation.Resource;
 import java.util.Map;
 
 /**
- * TODO
+ * kafka 消费者相关配置
  * <p>
- * create in 2021/3/10 3:54 下午
+ * create in 2021/3/25 2:08 下午
  *
  * @author shishaodong
  * @version 0.0.1
  */
+
 @Slf4j
 @Configuration
-public class UserAuditLogKafkaConfig {
+public class KafkaConsumerConfig {
+
+    @Resource
+    private KafkaAdmin kafkaAdmin;
 
     @Resource
     private KafkaProperties kafkaProperties;
@@ -40,8 +45,6 @@ public class UserAuditLogKafkaConfig {
     public ConsumerFactory<String, UserAuditLogDTO> consumerFactory() {
         Map<String, Object> map = Maps.newHashMap(kafkaProperties.buildConsumerProperties());
         map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, UserAuditLogDeserializer.class);
-//        map.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, property.getBatch());
-//        map.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, property.getBatch());
         return new DefaultKafkaConsumerFactory<>(map);
     }
 
@@ -65,5 +68,6 @@ public class UserAuditLogKafkaConfig {
 
     @Resource
     private ObjectProvider<RecordInterceptor<String, UserAuditLogDTO>> recordInterceptorObjectProvider;
+
 
 }

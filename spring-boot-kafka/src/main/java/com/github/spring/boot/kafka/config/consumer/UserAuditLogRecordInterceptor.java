@@ -1,4 +1,4 @@
-package com.github.spring.boot.kafka.config;
+package com.github.spring.boot.kafka.config.consumer;
 
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;

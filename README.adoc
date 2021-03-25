@@ -1,4 +1,5 @@
 = springboot 学习 demo
+:icons: font
 :pdf-themesdir: themes
 :pdf-fontsdir: fonts
 :pdf-theme: KaiGenGothicCN

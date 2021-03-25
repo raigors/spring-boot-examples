@@ -1,18 +1,17 @@
 = logback 用法讲解
 shishaodong <spring-boot@qq.com>
 v1.0,2021-03-16
+:icons: font
+:toc: right
 :pdf-themesdir: ../themes
 :pdf-fontsdir: ../fonts
 :pdf-theme: KaiGenGothicCN
 
-:toc:
 :imagesdir: image
 :author: Shishaodong
 :mail: spring-boot@qq.com
-:icons: font
 
-
-常用节点结构图
+== 常用节点结构图
 
 [TIP]
 .LogBack 基本用法
