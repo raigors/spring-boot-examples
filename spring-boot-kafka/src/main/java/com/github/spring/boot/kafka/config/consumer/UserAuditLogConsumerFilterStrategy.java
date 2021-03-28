@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class UserAuditLogFilterStrategy implements RecordFilterStrategy<String, UserAuditLogDTO> {
+public class UserAuditLogConsumerFilterStrategy implements RecordFilterStrategy<String, UserAuditLogDTO> {
 
     @Override
     public boolean filter(ConsumerRecord<String, UserAuditLogDTO> consumerRecord) {

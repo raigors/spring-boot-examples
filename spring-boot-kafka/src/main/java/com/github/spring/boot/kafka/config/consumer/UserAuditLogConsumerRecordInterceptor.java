@@ -4,11 +4,12 @@ import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.listener.RecordInterceptor;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 /**
- * TODO
+ * 数据转换或者统计
  * <p>
  * create in 2021/3/10 4:55 下午
  *
@@ -17,13 +18,13 @@ import java.util.Date;
  */
 
 @Slf4j
-//@Component
-public class UserAuditLogRecordInterceptor implements RecordInterceptor<String, UserAuditLogDTO> {
+@Component
+public class UserAuditLogConsumerRecordInterceptor implements RecordInterceptor<String, UserAuditLogDTO> {
 
     @Override
     public ConsumerRecord<String, UserAuditLogDTO> intercept(ConsumerRecord<String, UserAuditLogDTO> record) {
         record.value().setAccessDate(new Date());
-        log.error(record.value().toString());
+        log.debug(record.value().toString());
         return record;
     }
 }
