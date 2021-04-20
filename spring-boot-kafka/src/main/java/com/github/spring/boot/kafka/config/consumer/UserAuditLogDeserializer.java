@@ -1,4 +1,4 @@
-package com.github.spring.boot.kafka.deserializer;
+package com.github.spring.boot.kafka.config.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;

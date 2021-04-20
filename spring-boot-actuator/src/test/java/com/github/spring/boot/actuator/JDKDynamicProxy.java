@@ -23,6 +23,7 @@ public class JDKDynamicProxy implements InvocationHandler {
 
     /**
      * 获取被代理接口实例对象
+     *
      * @param <T>
      * @return
      */

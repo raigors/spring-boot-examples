@@ -8,7 +8,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- *
  * 在bean定义注册之前，条件会立即被检查，并且可以根据当时可以确定的任何标准自由地否决注册。
  * 条件必须遵循与 BeanFactoryPostProcessor 相同的限制，并且注意永远不要与 bean 实例交互。
  * 要对与配置 bean 交互的条件进行更细粒度的控制，请考虑 ConfigurationCondition 接口。

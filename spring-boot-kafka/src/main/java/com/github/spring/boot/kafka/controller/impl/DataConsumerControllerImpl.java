@@ -5,6 +5,7 @@ import com.github.spring.boot.kafka.pojo.ResultVO;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,7 +28,12 @@ public class DataConsumerControllerImpl implements IDataConsumerController {
         return null;
     }
 
-    @KafkaListener(topics = "test_topic", groupId = "test_group", clientIdPrefix = "test_client_id_prefix", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(
+//            topics = "test_UserAuditLog",
+            groupId = "test_group",
+            clientIdPrefix = "test_client_id_prefix",
+            topicPartitions = {@TopicPartition(partitions = "0", topic = "test_UserAuditLog")},
+            containerFactory = "kafkaListenerContainerFactory")
     @Override
     public ResultVO<Void> saveAllMessage(List<UserAuditLogDTO> list) {
         log.error(list.toString());

@@ -1,6 +1,5 @@
 package com.github.spring.boot.kafka.config.consumer;
 
-import com.github.spring.boot.kafka.deserializer.UserAuditLogDeserializer;
 import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.kafka.listener.RecordInterceptor;
 import org.springframework.kafka.listener.adapter.RecordFilterStrategy;
 
@@ -31,9 +29,6 @@ import java.util.Map;
 @Slf4j
 @Configuration
 public class KafkaConsumerConfig {
-
-    @Resource
-    private KafkaAdmin kafkaAdmin;
 
     @Resource
     private KafkaProperties kafkaProperties;

@@ -44,7 +44,7 @@ public class BodyReadController {
     }
 
     @GetMapping("/path/{data}")
-    public String path(@PathVariable String data){
+    public String path(@PathVariable String data) {
         return data;
     }
 }

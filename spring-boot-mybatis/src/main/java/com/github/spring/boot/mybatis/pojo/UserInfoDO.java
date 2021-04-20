@@ -27,7 +27,7 @@ public class UserInfoDO implements Serializable {
 
     private static final long serialVersionUID = -200618573669722274L;
 
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

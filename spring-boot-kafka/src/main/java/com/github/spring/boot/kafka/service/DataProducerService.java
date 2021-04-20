@@ -4,7 +4,6 @@ import com.github.spring.boot.kafka.pojo.UserAuditLogDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -19,14 +18,14 @@ import javax.annotation.Resource;
  */
 
 @Slf4j
-@Service
+//@Service
 public class DataProducerService {
 
-    @Resource
+    @Resource(name = "kafkaTemplate")
     private KafkaTemplate<String, String> template;
 
     @Transactional(rollbackFor = Exception.class)
-    public String dispatchMessage(UserAuditLogDTO message) {
+    public String dispatchTransactionalMessage(UserAuditLogDTO message) {
         template.send("test_topic", message.toString());
         if (StringUtils.contains(message.getMessage(), "error")) {
             log.info("error:{}", 10 / 0);
@@ -34,6 +33,5 @@ public class DataProducerService {
         template.send("test_topic", message.toString());
         return "SUCCESS";
     }
-
 
 }

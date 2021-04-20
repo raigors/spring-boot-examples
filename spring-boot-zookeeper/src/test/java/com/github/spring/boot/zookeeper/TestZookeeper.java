@@ -67,16 +67,6 @@ class TestZookeeper {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     @SneakyThrows
     private ZooKeeper getZooKeeper() {
         return new ZooKeeper(CONNECTION_ADDR, 4000, event -> {

@@ -21,7 +21,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisTemplateConfig {
 
     @Bean
-    public RedisHealthIndicator redisHealthIndicator(RedisConnectionFactory connectionFactory){
+    public RedisHealthIndicator redisHealthIndicator(RedisConnectionFactory connectionFactory) {
         return new RedisHealthIndicator(connectionFactory);
     }
 

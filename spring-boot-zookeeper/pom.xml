@@ -7,7 +7,6 @@
         <artifactId>spring-boot-examples</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.github</groupId>
     <artifactId>spring-boot-zookeeper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-zookeeper</name>
@@ -23,9 +22,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+            <artifactId>spring-cloud-starter-zookeeper-all</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

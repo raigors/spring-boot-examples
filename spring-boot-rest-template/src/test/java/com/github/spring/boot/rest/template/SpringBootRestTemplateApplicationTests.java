@@ -11,8 +11,6 @@ class SpringBootRestTemplateApplicationTests {
     void contextLoads() {
 
 
-
-
     }
 
 }

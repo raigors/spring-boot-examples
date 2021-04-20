@@ -2,7 +2,7 @@
 :pdf-themesdir: ../themes
 :pdf-fontsdir: ../fonts
 :pdf-theme: KaiGenGothicCN
-
+:imagedir: images
 
 == 名词解释
 
@@ -18,12 +18,17 @@
 
 == kafka 生产消息的过程
 
-== 分区器
+=== 流程图
 
+image::{imagedir}/kafka生产数据过程.jpg[title="kafka 数据生产过程",alt="Sunset",width="500",height="600"]
+
+=== 分区器
+
+在同一个分区内数据是有序的. +
 kafka 默认分区器根据消息的 key 来进行分区的分配, 即 hash(key)% numPartitions.如果 Key 相同,那么就会分配到统一的分区.
 org.apache.kafka.clients.producer.internals.DefaultPartitioner
 
-== 拦截器
+=== 拦截器
 
 Producer 拦截器(interceptor)是个相当新的功能, 它和 consumer端的 interceptor 是在 kafka 0.10 版本被引入的名主要用于实现 clients 端的定制化控制逻辑.
 生产者拦截器可以用在消息发送前做一些准备工作,
@@ -34,6 +39,8 @@ Producer 拦截器(interceptor)是个相当新的功能, 它和 consumer端的 i
 org.apache.kafka.clients.producer.ProducerInterceptor
 
 == 生产者的参数
+
+=== 流程图
 
 === acks
 

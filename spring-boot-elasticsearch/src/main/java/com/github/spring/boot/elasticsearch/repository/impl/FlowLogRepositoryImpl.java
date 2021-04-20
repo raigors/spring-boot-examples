@@ -21,7 +21,7 @@ public class FlowLogRepositoryImpl implements IFlowLogRepository {
 
     }
 
-    private String[] indexs(FlowLogDTO flowLog){
+    private String[] indexs(FlowLogDTO flowLog) {
         return null;
     }
 

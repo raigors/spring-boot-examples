@@ -1,6 +1,8 @@
 package com.github.spring.boot.param.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +11,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 /**
@@ -27,6 +30,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserInfoDTO<T> {
+
+    @Resource
+    @JsonIgnore
+    private ObjectMapper objectMapper;
 
     private String name;
 

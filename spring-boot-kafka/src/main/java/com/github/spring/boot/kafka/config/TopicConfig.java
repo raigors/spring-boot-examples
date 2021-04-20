@@ -5,6 +5,9 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.KafkaAdmin;
+
+import javax.annotation.Resource;
 
 /**
  * 配置 Kafka 主题
@@ -18,6 +21,9 @@ import org.springframework.kafka.config.TopicBuilder;
 @Slf4j
 @Configuration
 public class TopicConfig {
+
+    @Resource
+    private KafkaAdmin kafkaAdmin;
 
     @Bean
     public NewTopic topic() {

@@ -51,6 +51,7 @@
         <module>spring-boot-retry</module>
         <module>spring-boot-schedule</module>
         <module>spring-boot-swagger</module>
+        <module>spring-boot-zookeeper</module>
     </modules>
 
     <dependencies>

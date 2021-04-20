@@ -15,7 +15,7 @@ import lombok.Data;
  */
 
 @Data
-public class UserException  extends RuntimeException {
+public class UserException extends RuntimeException {
 
     private UserDO userDO;
 

@@ -7,7 +7,6 @@ import com.github.spring.boot.kafka.service.DataProducerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -21,7 +20,7 @@ import javax.annotation.Resource;
  */
 
 @Slf4j
-@RestController
+//@RestController
 public class DataProducerControllerImpl implements IDataProducerController {
 
     @Resource
@@ -30,7 +29,7 @@ public class DataProducerControllerImpl implements IDataProducerController {
     @PostMapping("/message1")
     @Override
     public ResultVO<String> dispatchMessage1(@RequestBody UserAuditLogDTO message) {
-        return ResultVO.success(producerService.dispatchMessage(message));
+        return ResultVO.success(producerService.dispatchTransactionalMessage(message));
     }
 
 }
