@@ -43,6 +43,7 @@
         <module>spring-boot-jackson</module>
         <module>spring-boot-kafka</module>
         <module>spring-boot-logback</module>
+        <module>spring-boot-mongodb</module>
         <module>spring-boot-mybatis</module>
         <module>spring-boot-param-binding</module>
         <module>spring-boot-property</module>
@@ -68,6 +69,11 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>${jetbrains.annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,7 @@
 = SpringBoot 打包成 docker 镜像
+:icons: fonts
+:toc: right
+:pdf-themesdir: themes
 
 == 快速使用
 

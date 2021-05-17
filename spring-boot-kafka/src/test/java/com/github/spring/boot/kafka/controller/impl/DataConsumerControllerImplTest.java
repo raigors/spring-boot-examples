@@ -13,6 +13,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -30,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @DirtiesContext
 @SpringBootTest
+@ActiveProfiles("junit2")
 @EmbeddedKafka(count = 3, ports = {9092, 9093, 9094}, controlledShutdown = true)
 class DataConsumerControllerImplTest {
 
