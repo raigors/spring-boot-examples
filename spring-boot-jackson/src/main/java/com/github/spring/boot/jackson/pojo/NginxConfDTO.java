@@ -48,16 +48,6 @@ public class NginxConfDTO {
 
     /**
      * 方法 1
-     * 创建配置
-     *
-     * @param service 创建配置文件的服务
-     */
-    public void generateConf(INginxConfService service) {
-        service.generateConf(this);
-    }
-
-    /**
-     * 方法 2
      * 加上 {@link JsonValue} 视图只会返回这个方法的返回.
      *
      * @return 配置文件
@@ -66,6 +56,16 @@ public class NginxConfDTO {
     public String getNginxConfResult() {
         // do something
         return nginxConf;
+    }
+
+    /**
+     * 方法 2
+     * 创建配置
+     *
+     * @param service 创建配置文件的服务
+     */
+    public void generateConf(INginxConfService service) {
+        service.generateConf(this);
     }
 
 }

@@ -25,7 +25,7 @@ public class RequestParamController {
     }
 
     @GetMapping("param2")
-    public ResultVO<UserInfoDTO> param2(UserInfoDTO user) {
+    public ResultVO<UserInfoDTO<String>> param2(UserInfoDTO<String> user) {
         return ResultVO.success(user);
     }
 }

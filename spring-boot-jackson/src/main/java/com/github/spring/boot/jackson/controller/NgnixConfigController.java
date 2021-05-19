@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * TODO
+ * 返回不同的格式, MVC ?
  * <p>
  * create in 2021/5/13 3:56 下午
  *

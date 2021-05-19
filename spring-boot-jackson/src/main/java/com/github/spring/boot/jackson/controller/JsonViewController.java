@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 返回不通的视图
+ *
  * <p>
  * 创建时间为 21:54-2019-04-22
  * 项目名称 SpringBootJackson

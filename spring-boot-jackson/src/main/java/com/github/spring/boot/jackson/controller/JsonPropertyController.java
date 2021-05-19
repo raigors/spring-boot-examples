@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 别名处理
  * <p>
  * 创建时间为 21:25-2019-04-22
  * 项目名称 SpringBootJackson

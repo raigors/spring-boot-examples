@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 对指定字段进行反序列化
+ *
  * @author 石少东
  * @date 2020-10-23 15:18
  * @since 1.0
