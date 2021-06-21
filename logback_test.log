@@ -1,0 +1,48 @@
+2021-05-18 11:17:03.168  INFO 9752 --- [restartedMain] c.g.s.b.l.SpringBootLogbackApplication   : Starting SpringBootLogbackApplication using Java 1.8.0_275 on shi.local with PID 9752 (/Users/shishaodong/IdeaProjects/spring-boot-examples/spring-boot-logback/target/classes started by shishaodong in /Users/shishaodong/IdeaProjects/spring-boot-examples)
+2021-05-18 11:17:03.176  INFO 9752 --- [restartedMain] c.g.s.b.l.SpringBootLogbackApplication   : The following profiles are active: dev
+2021-05-18 11:17:03.310  INFO 9752 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-05-18 11:17:03.311  INFO 9752 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-05-18 11:17:05.587  INFO 9752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8899 (http)
+2021-05-18 11:17:05.602  INFO 9752 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-18 11:17:05.602  INFO 9752 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.44]
+2021-05-18 11:17:05.685  INFO 9752 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-18 11:17:05.686  INFO 9752 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2372 ms
+2021-05-18 11:17:06.298  INFO 9752 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-18 11:17:07.003  INFO 9752 --- [restartedMain] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-05-18 11:17:07.042  INFO 9752 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-18 11:17:07.055  INFO 9752 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-05-18 11:17:07.187  INFO 9752 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8899 (http) with context path ''
+2021-05-18 11:17:07.215 ERROR 9752 --- [scheduling-2] c.g.s.b.logback.schedule.ScheduleError   : error
+2021-05-18 11:17:07.217  INFO 9752 --- [scheduling-3] c.g.s.b.logback.schedule.ScheduleInfo    : info - tag
+2021-05-18 11:17:07.224  WARN 9752 --- [scheduling-5] c.g.s.b.logback.schedule.ScheduleWarn    : warn
+2021-05-18 11:17:07.236  WARN 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:07.237  INFO 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:07.250  INFO 9752 --- [restartedMain] c.g.s.b.l.SpringBootLogbackApplication   : Started SpringBootLogbackApplication in 5.664 seconds (JVM running for 8.313)
+2021-05-18 11:17:07.956  INFO 9752 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-18 11:17:07.957  INFO 9752 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-18 11:17:07.959  INFO 9752 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-05-18 11:17:08.234  WARN 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:08.236  INFO 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:09.234  WARN 9752 --- [scheduling-7] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:09.235  INFO 9752 --- [scheduling-7] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:10.234  WARN 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:10.235  INFO 9752 --- [scheduling-6] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:11.234  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:11.235  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:12.235  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:12.235  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:13.234  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:13.235  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:14.235  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:14.235  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:15.235  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:15.236  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:16.237  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:16.237  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:17.221 ERROR 9752 --- [scheduling-2] c.g.s.b.logback.schedule.ScheduleError   : error
+2021-05-18 11:17:17.221  INFO 9752 --- [scheduling-3] c.g.s.b.logback.schedule.ScheduleInfo    : info - tag
+2021-05-18 11:17:17.226  WARN 9752 --- [scheduling-5] c.g.s.b.logback.schedule.ScheduleWarn    : warn
+2021-05-18 11:17:17.235  WARN 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major warn
+2021-05-18 11:17:17.239  INFO 9752 --- [scheduling-8] c.g.s.boot.logback.service.MajorService  : major info
+2021-05-18 11:17:17.793  INFO 9752 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2021-05-18 11:17:17.799  INFO 9752 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

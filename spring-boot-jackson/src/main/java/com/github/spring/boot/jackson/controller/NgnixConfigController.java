@@ -31,7 +31,7 @@ public class NgnixConfigController {
 
     @PostMapping("nginx/conf2")
     public NginxConfDTO nginxConf2(@RequestBody NginxConfDTO nginxConf) {
-        // OCP 原则
+        // OCP  双分派
         nginxConf.generateConf(service);
         return nginxConf;
     }
