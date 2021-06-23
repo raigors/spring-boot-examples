@@ -2,7 +2,12 @@ package com.github.spring.boot.aop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
+/**
+ * @author shishaodong
+ */
+@EnableAspectJAutoProxy
 @SpringBootApplication
 public class SpringBootAopApplication {
 
