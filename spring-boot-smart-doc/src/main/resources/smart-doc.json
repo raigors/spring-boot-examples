@@ -1,0 +1,17 @@
+{
+  "isStrict": false,
+  "allInOne": true,
+  "outPath": "./target/api-web",
+  "projectName": "spring-boot-smart-doc",
+  "appKey": "20210623857308621954875392",
+  "secret": "oshzxcIfrZXLUZ5ezr^3FRFxRU#hDs%Z",
+  "appToken": "70fabe84e7694fd5b2e627f93e3f9dd6",
+  "openUrl": "http://172.21.48.233:7700/api",
+  "debugEnvName":"开发环境测试环境",
+  "debugEnvUrl":"http://172.21.48.233",
+  "rpcApiDependencies":[{
+    "artifactId":"spring-boot-smart-doc",
+    "groupId":"com.github",
+    "version":"0.0.1-SNAPSHOT"
+  }]
+}

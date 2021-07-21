@@ -18,9 +18,6 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface IUserInfoMapper {
 
-
-
-
     @Select("SELECT * FROM user_info WHERE id = #{id}")
     UserInfoDO selectFromUserInfoByUserId(@Param("id") long id);
 
